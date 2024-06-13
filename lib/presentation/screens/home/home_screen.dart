@@ -49,7 +49,7 @@ class _CustomListTitle extends StatelessWidget {
         subtitle: Text(menuItem.subTitle),
         leading: Icon(menuItem.icon, color: colors.primary),
         onTap: () {
-          context.pushNamed(menuItem.link);
+          context.push(menuItem.link);
         });
   }
 }

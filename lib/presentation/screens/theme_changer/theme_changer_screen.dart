@@ -34,6 +34,8 @@ class _ThemChangerView extends ConsumerWidget {
   Widget build(BuildContext context, ref) {
     final List<Color> colors = ref.watch(colorListProvider);
 
+    final int selectedColor = ref.watch(selectedColorProvider);
+
     return ListView.builder(
       itemCount: colors.length,
       itemBuilder: (context, index) {
@@ -46,9 +48,9 @@ class _ThemChangerView extends ConsumerWidget {
           subtitle: Text('#${color.value.toRadixString(16)}'),
           activeColor: color,
           value: index,
-          groupValue: 4,
+          groupValue: selectedColor,
           onChanged: (value) {
-            //TODO: notificar cambio a algun lugar
+            ref.read(selectedColorProvider.notifier).state = index;
           },
         );
       },
